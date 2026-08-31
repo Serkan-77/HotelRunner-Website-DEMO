@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HotelAIWidget from "@/components/ai/HotelAIWidget";
-import FloatingAIButton from "@/components/ai/FloatingAIButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +30,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <FloatingAIButton />
 
         {/* CMND.ai chatbot widget — mounted once globally */}
         <HotelAIWidget />
