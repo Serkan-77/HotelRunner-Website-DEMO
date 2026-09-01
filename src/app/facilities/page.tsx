@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { facilities, services } from "@/data/hotel";
 import FacilityCard from "@/components/hotel/FacilityCard";
+import Icon from "@/components/hotel/Icon";
 
 export const metadata: Metadata = {
   title: "Facilities | Sunrise Hotel",
@@ -24,10 +25,18 @@ export default function FacilitiesPage() {
       <p className="mt-3 text-black/60 max-w-2xl">Additional guest services, available on request.</p>
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => (
-          <div key={s.name} className="rounded-xl border border-black/10 p-5">
-            <h3 className="font-semibold">{s.name}</h3>
-            <p className="text-sm text-black/60 mt-1">{s.hours}</p>
-            <p className="text-sm text-accent font-medium mt-1">{s.price}</p>
+          <div
+            key={s.name}
+            className="group flex items-start gap-4 rounded-xl border border-black/10 p-5 hover:border-accent hover:shadow-lg hover:-translate-y-0.5 transition-all"
+          >
+            <div className="w-11 h-11 shrink-0 rounded-full bg-accent/15 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-colors">
+              <Icon name={s.icon} />
+            </div>
+            <div>
+              <h3 className="font-semibold">{s.name}</h3>
+              <p className="text-sm text-black/60 mt-1">{s.hours}</p>
+              <p className="text-sm text-accent font-medium mt-1">{s.price}</p>
+            </div>
           </div>
         ))}
       </div>

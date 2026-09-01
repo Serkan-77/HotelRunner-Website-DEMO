@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import { contact } from "@/data/hotel";
 import AskAICta from "@/components/ai/AskAICta";
 import ContactForm from "@/components/hotel/ContactForm";
+import Icon from "@/components/hotel/Icon";
+
+const contactItems = [
+  { label: "Phone", value: contact.phone, icon: "phone" },
+  { label: "Reception", value: contact.reception, icon: "clock" },
+  { label: "WhatsApp", value: contact.whatsapp, icon: "whatsapp" },
+  { label: "Email", value: contact.email, icon: "mail" },
+  { label: "Address", value: contact.address, icon: "pin" },
+];
 
 export const metadata: Metadata = {
   title: "Contact | Sunrise Hotel",
@@ -18,26 +27,20 @@ export default function ContactPage() {
 
       <div className="mt-10 grid gap-12 lg:grid-cols-2">
         <div className="space-y-4">
-          <div className="rounded-xl border border-black/10 p-5">
-            <p className="text-sm text-black/50">Phone</p>
-            <p className="font-medium">{contact.phone}</p>
-          </div>
-          <div className="rounded-xl border border-black/10 p-5">
-            <p className="text-sm text-black/50">Reception</p>
-            <p className="font-medium">{contact.reception}</p>
-          </div>
-          <div className="rounded-xl border border-black/10 p-5">
-            <p className="text-sm text-black/50">WhatsApp</p>
-            <p className="font-medium">{contact.whatsapp}</p>
-          </div>
-          <div className="rounded-xl border border-black/10 p-5">
-            <p className="text-sm text-black/50">Email</p>
-            <p className="font-medium">{contact.email}</p>
-          </div>
-          <div className="rounded-xl border border-black/10 p-5">
-            <p className="text-sm text-black/50">Address</p>
-            <p className="font-medium">{contact.address}</p>
-          </div>
+          {contactItems.map((item) => (
+            <div
+              key={item.label}
+              className="group flex items-center gap-4 rounded-xl border border-black/10 p-5 hover:border-accent hover:shadow-lg hover:-translate-y-0.5 transition-all"
+            >
+              <div className="w-11 h-11 shrink-0 rounded-full bg-accent/15 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-colors">
+                <Icon name={item.icon} />
+              </div>
+              <div>
+                <p className="text-sm text-black/50">{item.label}</p>
+                <p className="font-medium">{item.value}</p>
+              </div>
+            </div>
+          ))}
 
           <AskAICta
             label="Ask the AI Assistant"

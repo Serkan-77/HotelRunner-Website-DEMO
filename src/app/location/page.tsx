@@ -36,7 +36,10 @@ export default function LocationPage() {
       <h2 className="text-2xl sm:text-3xl font-bold mt-20">Hotel Policies</h2>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {policies.map((p) => (
-          <div key={p.title} className="rounded-xl border border-black/10 p-5">
+          <div
+            key={p.title}
+            className="rounded-xl border border-black/10 p-5 hover:border-accent hover:shadow-lg hover:-translate-y-0.5 transition-all"
+          >
             <h3 className="font-semibold">{p.title}</h3>
             <p className="text-sm text-black/60 mt-1">{p.text}</p>
           </div>
